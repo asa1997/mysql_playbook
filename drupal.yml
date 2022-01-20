@@ -1,0 +1,64 @@
+---
+- name: Setting up drupal
+  hosts: localhost
+  become: true
+
+  tasks:
+    # - name: Downloading artifact
+    #   shell: wget https://ftp.drupal.org/files/projects/drupal-8.6.5.zip -P /var/www/html/drupal_RT_env 
+    
+    # - name: Unzipping artifact
+    #   shell: |
+    #     cd /var/www/html/drupal_RT_env 
+    #     unzip drupal-8.6.5.zip
+    
+    # - name: Updating file permissions
+    #   shell: |
+    #     mkdir -p /var/www/html/drupal_RT_env/drupal-8.6.5/sites/default/files
+    #     chmod -R 777 /var/www/html/drupal_RT_env/drupal-8.6.5/sites/default/files
+    #     cp /var/www/html/drupal_RT_env/drupal-8.6.5/sites/default/default.settings.php /var/www/html/drupal_RT_env/drupal-8.6.5/sites/default/settings.php
+    #     chmod 777 /var/www/html/drupal_RT_env/drupal-8.6.5/sites/default/settings.php
+    
+    # - name: login to mysql
+    #   shell: |
+    #     mysql -u root -p 
+    #     CREATE USER 'drupal_user'@'localhost' IDENTIFIED BY '12345';
+    #     create database drupal_db;
+    #     GRANT ALL PRIVILEGES ON drupal_db.* TO 'drupal_user'@'localhost';
+    #     FLUSH PRIVILEGES;
+    #     quit;
+    
+    - name: deleting user "drupal_user"
+      mysql_user:
+        login_user: root
+        login_password: mylap1997@
+        host: localhost
+        name: drupal_user
+        state: absent
+    
+    - name: creating user "drupal_user"
+      mysql_user:
+        login_user: root
+        login_password: mylap1997@
+        host: localhost
+        name: drupal_user
+        priv: '*.*:ALL'
+        state: present
+    
+    - name: deleting db "drupal_db"
+      mysql_db:
+        login_user: root
+        login_password: mylap1997@
+        name: drupal_db
+        state: absent
+    
+    - name: creating db "drupal_db"
+      mysql_db:
+        login_user: root
+        login_password: mylap1997@
+        name: drupal_db
+        state: absent
+
+
+
+    

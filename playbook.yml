@@ -1,0 +1,8 @@
+---
+- name: Install php
+  hosts: localhost
+  become: true
+  roles:
+    # - geerlingguy.php
+    - geerlingguy.drupal
+    - geerlingguy.drush
