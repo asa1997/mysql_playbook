@@ -36,7 +36,7 @@
     - name: deleting user "drupal_user"
       mysql_user:
         login_user: root
-        login_password: mylap1997@
+        login_password: xxxxx
         host: localhost
         name: drupal_user
         state: absent
@@ -44,7 +44,7 @@
     - name: creating user "drupal_user"
       mysql_user:
         login_user: root
-        login_password: mylap1997@
+        login_password: xxxx
         host: localhost
         name: drupal_user
         priv: '*.*:ALL'
@@ -53,14 +53,14 @@
     - name: deleting db "drupal_db"
       mysql_db:
         login_user: root
-        login_password: mylap1997@
+        login_password: xxxx
         name: drupal_db
         state: absent
     
     - name: creating db "drupal_db"
       mysql_db:
         login_user: root
-        login_password: mylap1997@
+        login_password: xxxxx
         name: drupal_db
         state: present
 
